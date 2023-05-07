@@ -1,8 +1,8 @@
 import os
 from random import randrange
 
-new_path = "./test_movies"
-number_of_files = 10
+new_path = "./test movies (1978)"
+number_of_files = 106
 largest_file_size = 1000
 
 def generate_test_file(file_name, number_of_bytes):

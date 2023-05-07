@@ -1,8 +1,9 @@
-from os import listdir, stat, remove
+from os import listdir, stat, remove, rename
 from os.path import isfile, join
 
 # TODO: dhoward -- get this via command-line args
-path = "./test_movies"
+folder_name = "test movies (1978)"
+path = f"./{folder_name}"
 only_mkv_files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswith('.mkv')]
 
 largest_file_size = 0
@@ -24,3 +25,5 @@ for file in files_to_delete:
     size = stat(full_file_path).st_size
     print(f"File: {file} -- size: {size}")
     remove(full_file_path)
+
+rename(f"{path}/{largest_file}", f"{folder_name}.mkv")
