@@ -3,9 +3,6 @@ from os.path import isfile, join, isdir
 
 # TODO: dhoward -- get this via command-line args
 base_path = "./movies"
-# folder_name = "test movies (1978)"
-# path = f"./{folder_name}"
-
 movie_folders = [f for f in listdir(base_path) if isdir(join(base_path, f))]
 
 for movie_folder in movie_folders:
