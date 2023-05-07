@@ -1,9 +1,22 @@
 import os
 from random import randrange
+from os.path import isfile, join, isdir
 
-new_path = "./test movies (1978)"
+base_path = "./movies"
+# new_path = "./test movies (1978)"
+number_of_movies = 10
 number_of_files = 106
 largest_file_size = 1000
+
+if not os.path.exists(base_path):
+    os.makedirs(base_path)
+
+def generate_test_mkv_output_dir():
+    random_year = randrange(1940, 2022, 1)
+    movie_name = f"./{base_path}/test movies ({random_year})"
+    if not os.path.exists(movie_name):
+        os.makedirs(movie_name)
+
 
 def generate_test_file(file_name, number_of_bytes):
     fp = open(file_name, "w")
@@ -11,16 +24,19 @@ def generate_test_file(file_name, number_of_bytes):
         fp.write("a")
     fp.close()
 
+# generate test movie folders
+for i in range(number_of_movies):
+    generate_test_mkv_output_dir()
 
-if not os.path.exists(new_path):
-    os.makedirs(new_path)
+generated_movie_folders = [f for f in os.listdir(base_path) if isdir(join(base_path, f))]
 
-for i in range(number_of_files):
-    file_size = 0
-    # Create largest file here
-    if i == 0:
-        file_size = largest_file_size
-    else:
-        file_size = randrange(1, (largest_file_size - 1), 1)
-    
-    generate_test_file(f"{new_path}/file{i}.mkv", file_size)
+for movie_folder in generated_movie_folders:
+    for i in range(number_of_files):
+        file_size = 0
+        # Create largest file here
+        if i == 0:
+            file_size = largest_file_size
+        else:
+            file_size = randrange(1, (largest_file_size - 1), 1)
+        
+        generate_test_file(f"{base_path}/{movie_folder}/file{i}.mkv", file_size)
