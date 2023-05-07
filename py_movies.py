@@ -1,8 +1,7 @@
-from os import listdir
+from os import listdir, stat
 from os.path import isfile, join
 onlyfiles = [f for f in listdir('.') if isfile(join('.', f))]
 
 for file in onlyfiles:
-    print(file)
-
-# print(onlyfiles)
+    size = stat(file).st_size
+    print(f'File: {file} -- size: {size}')
