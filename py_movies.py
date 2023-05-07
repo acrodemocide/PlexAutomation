@@ -8,7 +8,6 @@ only_mkv_files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswi
 largest_file_size = 0
 largest_file = ""
 for file in only_mkv_files:
-    # print(f"File: {file}")
     full_file_path = f"{path}/{file}"
     size = stat(full_file_path).st_size
     if size > largest_file_size:
