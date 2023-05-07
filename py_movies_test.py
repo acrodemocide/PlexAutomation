@@ -1,3 +1,4 @@
+import math
 import os
 from random import randrange
 from os.path import isfile, join, isdir
@@ -31,9 +32,10 @@ generated_movie_folders = [f for f in os.listdir(base_path) if isdir(join(base_p
 
 for movie_folder in generated_movie_folders:
     for i in range(number_of_files):
+        rough_midpoint = math.floor(number_of_files / 2)
         file_size = 0
         # Create largest file here
-        if i == 0:
+        if i == rough_midpoint:
             file_size = largest_file_size
         else:
             file_size = randrange(1, (largest_file_size - 1), 1)
