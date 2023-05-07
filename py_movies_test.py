@@ -3,9 +3,8 @@ from random import randrange
 from os.path import isfile, join, isdir
 
 base_path = "./movies"
-# new_path = "./test movies (1978)"
 number_of_movies = 10
-number_of_files = 106
+number_of_files = 10
 largest_file_size = 1000
 
 if not os.path.exists(base_path):
