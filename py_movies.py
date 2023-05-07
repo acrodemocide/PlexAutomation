@@ -1,8 +1,8 @@
+import sys
 from os import listdir, stat, remove, rename
 from os.path import isfile, join, isdir
 
-# TODO: dhoward -- get this via command-line args
-base_path = "./movies"
+base_path = sys.argv[1]
 movie_folders = [f for f in listdir(base_path) if isdir(join(base_path, f))]
 
 for movie_folder in movie_folders:
