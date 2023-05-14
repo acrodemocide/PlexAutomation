@@ -24,4 +24,5 @@ for tv_show in tv_shows:
             print(disc)
             disc_path = join(season_path, disc)
             files = get_child_files(disc_path)
+            files.sort()
             print(files)
