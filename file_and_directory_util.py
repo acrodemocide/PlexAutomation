@@ -1,7 +1,5 @@
-import math
 import os
 from random import randrange
-from os.path import join, isdir
 
 def generate_directories(base_path, number_dirs):
     generated_dirs = []
