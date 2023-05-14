@@ -14,11 +14,10 @@ def generate_directories(base_path, number_dirs):
     
     return generated_dirs
 
-def generate_sequential_dirs(base_path, base_name, max_number_to_generate):
-    number_to_generate = randrange(1, max_number_to_generate, 1)
+def generate_sequential_dirs(base_path, base_name, number_to_generate):
     generated_dirs = []
     for i in range(number_to_generate):
-        generated_dir = f"{base_path}/{base_name} {i}"
+        generated_dir = f"{base_path}/{base_name} {i + 1}"
         if not os.path.exists(generated_dir):
             os.makedirs(generated_dir)
             generated_dirs.append(generated_dir)
