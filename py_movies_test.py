@@ -9,12 +9,6 @@ number_of_movies = 10
 number_of_files = 10
 largest_file_size = 1000
 
-# def generate_test_file(file_name, number_of_bytes):
-#     fp = open(file_name, "w")
-#     for j in range(number_of_bytes):
-#         fp.write("a")
-#     fp.close()
-
 if not os.path.exists(base_path):
     os.makedirs(base_path)
 

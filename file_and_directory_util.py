@@ -30,26 +30,3 @@ def generate_file(file_name, number_of_bytes):
     for j in range(number_of_bytes):
         fp.write("a")
     fp.close()
-
-# for movie_folder in generated_movie_folders:
-#     for i in range(number_of_files):
-#         rough_midpoint = math.floor(number_of_files / 2)
-#         file_size = 0
-#         # Create largest file here
-#         if i == rough_midpoint:
-#             file_size = largest_file_size
-#         else:
-#             file_size = randrange(1, (largest_file_size - 1), 1)
-        
-#         generate_test_file(f"{base_path}/{movie_folder}/file{i}.mkv", file_size)
-
-# def generate_sequential_files(base_path, base_name, max_number_to_generate):
-#     number_to_generate = randrange(1, max_number_to_generate, 1)
-#     generated_files = []
-#     for i in range(number_to_generate):
-#         generated_file = f"{base_path}/{base_name} {i}"
-#         if not os.path.exists(generated_file):
-#             os.makedirs(generated_file)
-#             generated_files.append(generated_file)
-#     return generated_files
-#     pass
