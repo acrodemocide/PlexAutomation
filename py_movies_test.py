@@ -1,21 +1,22 @@
 import math
 import os
 from random import randrange
-from os.path import isfile, join, isdir
+from os.path import join, isdir
+from file_and_directory_util import TestUtilities
 
 base_path = "./movies"
 number_of_movies = 10
 number_of_files = 10
 largest_file_size = 1000
 
-if not os.path.exists(base_path):
-    os.makedirs(base_path)
+# if not os.path.exists(base_path):
+#     os.makedirs(base_path)
 
-def generate_test_mkv_output_dir():
-    random_year = randrange(1940, 2022, 1)
-    movie_name = f"./{base_path}/test movies ({random_year})"
-    if not os.path.exists(movie_name):
-        os.makedirs(movie_name)
+# def generate_test_mkv_output_dir():
+#     random_year = randrange(1940, 2022, 1)
+#     movie_name = f"./{base_path}/test movies ({random_year})"
+#     if not os.path.exists(movie_name):
+#         os.makedirs(movie_name)
 
 
 def generate_test_file(file_name, number_of_bytes):
@@ -25,8 +26,11 @@ def generate_test_file(file_name, number_of_bytes):
     fp.close()
 
 # generate test movie folders
-for i in range(number_of_movies):
-    generate_test_mkv_output_dir()
+# for i in range(number_of_movies):
+#     generate_test_mkv_output_dir()
+base_dir_title = "test movie"
+util = TestUtilities(base_path, number_of_movies, base_dir_title)
+util.generate_directory_tree()
 
 generated_movie_folders = [f for f in os.listdir(base_path) if isdir(join(base_path, f))]
 
