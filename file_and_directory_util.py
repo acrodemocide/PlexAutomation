@@ -3,21 +3,18 @@ import os
 from random import randrange
 from os.path import join, isdir
 
-class TestUtilities:
-    def __init__(self, base_path, number_dirs, base_dir_title):
-        self.base_path = base_path
-        self.number_dirs = number_dirs
-        self.base_dir_title = base_dir_title
+def generate_directories(base_path, number_dirs):
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
 
-    def generate_test_mkv_output_dir(self):
+    generated_directories = []
+
+    for i in range(number_dirs):
         random_year = randrange(1940, 2022, 1)
-        movie_name = f"./{self.base_path}/{self.base_dir_title} ({random_year})"
-        if not os.path.exists(movie_name):
-            os.makedirs(movie_name)
+        dir_path = f"./{base_path}/test ({random_year})"
+        if not os.path.exists(dir_path):
+            os.makedirs(dir_path)
+            generated_directories.append(dir_path)
+    
+    return generated_directories
 
-    def generate_directory_tree(self):
-        if not os.path.exists(self.base_path):
-            os.makedirs(self.base_path)
-
-        for i in range(self.number_dirs):
-            self.generate_test_mkv_output_dir()

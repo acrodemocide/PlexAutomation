@@ -2,7 +2,7 @@ import math
 import os
 from random import randrange
 from os.path import join, isdir
-from file_and_directory_util import TestUtilities
+from file_and_directory_util import generate_directories
 
 base_path = "./movies"
 number_of_movies = 10
@@ -17,8 +17,7 @@ def generate_test_file(file_name, number_of_bytes):
 
 # generate test movie folders
 base_dir_title = "test movie"
-util = TestUtilities(base_path, number_of_movies, base_dir_title)
-util.generate_directory_tree()
+generate_directories(base_path, number_of_movies)
 
 generated_movie_folders = [f for f in os.listdir(base_path) if isdir(join(base_path, f))]
 
