@@ -9,16 +9,6 @@ number_of_movies = 10
 number_of_files = 10
 largest_file_size = 1000
 
-# if not os.path.exists(base_path):
-#     os.makedirs(base_path)
-
-# def generate_test_mkv_output_dir():
-#     random_year = randrange(1940, 2022, 1)
-#     movie_name = f"./{base_path}/test movies ({random_year})"
-#     if not os.path.exists(movie_name):
-#         os.makedirs(movie_name)
-
-
 def generate_test_file(file_name, number_of_bytes):
     fp = open(file_name, "w")
     for j in range(number_of_bytes):
@@ -26,8 +16,6 @@ def generate_test_file(file_name, number_of_bytes):
     fp.close()
 
 # generate test movie folders
-# for i in range(number_of_movies):
-#     generate_test_mkv_output_dir()
 base_dir_title = "test movie"
 util = TestUtilities(base_path, number_of_movies, base_dir_title)
 util.generate_directory_tree()
