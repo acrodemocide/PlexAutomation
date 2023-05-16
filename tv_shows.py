@@ -1,6 +1,7 @@
 import os
-from os import rmdir, rename
+from os import rmdir, remove, rename, stat
 from os.path import join, isdir
+import statistics
 
 base_path = "tv_shows"
 
@@ -11,6 +12,13 @@ def get_child_directories(path):
 def get_child_files(path):
     children = [f for f in os.listdir(path) if not isdir(join(path, f))]
     return children
+
+def remove_files_that_are_not_episodes(file_paths):
+    file_lengths = [stat(f).st_size for f in file_paths]
+    mean_length = statistics.mean(file_lengths)
+    [remove(f) for f in file_paths if stat(f).st_size >= 2 * mean_length or stat(f).st_size <= 0.75 * mean_length]
+    return [f for f in file_paths if stat(f).st_size < 2 * mean_length and stat(f).st_size > 0.75 * mean_length]
+
 
 tv_shows = get_child_directories(base_path)
 for tv_show in tv_shows:
@@ -28,17 +36,17 @@ for tv_show in tv_shows:
         for disc in discs:
             disc_path = join(season_path, disc)
             files = get_child_files(disc_path)
-            # Remove files that are not episodes
-            files.sort()
-            for file in files:
+            episode_file_paths = remove_files_that_are_not_episodes([join(disc_path, f) for f in files])
+            episode_file_paths.sort()
+            for episode_file_path in episode_file_paths:
                 if (current_episode_number < 10):
                     new_file_name = f"{file_name_prefix}e0{current_episode_number}.mkv"
                 else:
                     new_file_name = f"{file_name_prefix}e{current_episode_number}.mkv"
                 current_episode_number += 1
-                cur_file_path = join(disc_path, file)
+                # cur_file_path = join(disc_path, episode_file_path)
                 new_file_path = join(season_path, new_file_name)
-                rename(cur_file_path, new_file_path)
+                rename(episode_file_path, new_file_path)
             rmdir(disc_path)
 
 
