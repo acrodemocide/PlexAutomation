@@ -1,9 +1,10 @@
+import sys
 import os
 from os import rmdir, remove, rename, stat
 from os.path import join, isdir
 import statistics
 
-base_path = "tv_shows"
+base_path = sys.argv[1]
 
 def get_child_directories(path):
     children = [f for f in os.listdir(path) if isdir(join(path, f))]
