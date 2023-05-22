@@ -17,8 +17,9 @@ def get_child_files(path):
 def remove_files_that_are_not_episodes(file_paths):
     file_lengths = [stat(f).st_size for f in file_paths]
     mean_length = statistics.mean(file_lengths)
+    filtered_files = [f for f in file_paths if stat(f).st_size < 2 * mean_length and stat(f).st_size > 0.75 * mean_length]
     [remove(f) for f in file_paths if stat(f).st_size >= 2 * mean_length or stat(f).st_size <= 0.75 * mean_length]
-    return [f for f in file_paths if stat(f).st_size < 2 * mean_length and stat(f).st_size > 0.75 * mean_length]
+    return filtered_files
 
 
 tv_shows = get_child_directories(base_path)

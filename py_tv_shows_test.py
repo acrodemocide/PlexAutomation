@@ -14,6 +14,11 @@ def generate_season_dirs(tv_show_path):
 def generate_disc_dirs(season_path):
     return generate_sequential_dirs(season_path, "Disc", 5)
 
+def generate_episode_files_only(path):
+    for i in range(number_of_episodes_per_disc):
+        file_size = 500
+        generate_file(f"{path}/A{i}.mkv", file_size)
+
 def generate_episodes_only_files(tv_show_path):
     season_dirs = [f for f in os.listdir(tv_show_path) if isdir(join(tv_show_path, f))]
     for season_dir in season_dirs:
@@ -21,9 +26,12 @@ def generate_episodes_only_files(tv_show_path):
         disc_dirs = [file for file in os.listdir(season_path) if isdir(join(season_path, file))]
         for disc_dir in disc_dirs:
             disc_path = f"{season_path}/{disc_dir}"
-            for i in range(number_of_episodes_per_disc):
-                file_size = 500
-                generate_file(f"{disc_path}/A{i}.mkv", file_size)
+            generate_episode_files_only(disc_path)
+
+# Most TV series ripped have a file that contains all of the episodes, then
+# individual files for each episode
+def generate_episode_files_with_large_file():
+    pass
 
 if not os.path.exists(base_path):
     os.makedirs(base_path)
