@@ -43,19 +43,3 @@ for tv_show_dir in tv_show_dirs:
     for season_dir in season_dirs:
         disc_dirs = generate_disc_dirs(season_dir)
     generate_episodes_only_files(tv_show_dir)
-
-# def create_episodes_only_discs(number_of_discs):
-#     pass
-
-# def create_discs_with_special_episode(number_of_discs):
-#     pass
-
-# def create_discs_with_special_features(number_of_discs):
-#     pass
-
-# def create_discs_with_master_file(number_of_discs):
-#     pass
-
-# # Special episodes, special features, and a master_file
-# def create_discs_with_all_possibilities(number_of_discs):
-#     pass
