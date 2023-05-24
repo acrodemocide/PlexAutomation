@@ -46,7 +46,6 @@ for tv_show in tv_shows:
                 else:
                     new_file_name = f"{file_name_prefix}e{current_episode_number}.mkv"
                 current_episode_number += 1
-                # cur_file_path = join(disc_path, episode_file_path)
                 new_file_path = join(season_path, new_file_name)
                 rename(episode_file_path, new_file_path)
             rmdir(disc_path)

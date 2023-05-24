@@ -1,18 +1,18 @@
 import sys
-from os import listdir, stat, remove, rename
+from os import listdir, stat, remove, rename, rmdir
 from os.path import isfile, join, isdir
 
 base_path = sys.argv[1]
 movie_folders = [f for f in listdir(base_path) if isdir(join(base_path, f))]
 
 for movie_folder in movie_folders:
-    path = f"{base_path}/{movie_folder}"
+    path = join(base_path, movie_folder)
     only_mkv_files = [f for f in listdir(path) if isfile(join(path, f)) and f.endswith('.mkv')]
 
     largest_file_size = 0
     largest_file = ""
     for file in only_mkv_files:
-        full_file_path = f"{path}/{file}"
+        full_file_path = join(path, file)
         size = stat(full_file_path).st_size
         if size > largest_file_size:
             largest_file_size = size
@@ -24,9 +24,12 @@ for movie_folder in movie_folders:
     files_to_delete = [f for f in only_mkv_files if f != largest_file]
     print("Files to delete:")
     for file in files_to_delete:
-        full_file_path = f"{path}/{file}"
+        full_file_path = join(path, file)
         size = stat(full_file_path).st_size
         print(f"File: {file} -- size: {size}")
+        print(f"removing file: {full_file_path}")
         remove(full_file_path)
 
-    rename(f"{path}/{largest_file}", f"{movie_folder}.mkv")
+    rename(join(path, largest_file), f"{movie_folder}.mkv")
+    print(f"removing folder: {path}")
+    rmdir(path)
