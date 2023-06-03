@@ -1,6 +1,4 @@
 import os
-from random import randrange
-from os.path import join, isdir
 from file_and_directory_util import generate_directories, generate_sequential_dirs, generate_file
 
 base_path = "tv_shows"
@@ -8,38 +6,20 @@ number_of_tv_shows = 10
 number_of_discs_per_show = 4
 number_of_episodes_per_disc = 5
 
-def generate_season_dirs(tv_show_path):
-    return generate_sequential_dirs(tv_show_path, "Season", 5)
+def generate_generic_tv_shows():
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
 
-def generate_disc_dirs(season_path):
-    return generate_sequential_dirs(season_path, "Disc", 5)
+    tv_show_dirs = generate_directories(base_path, number_of_tv_shows)
 
-def generate_episode_files_only(path):
-    for i in range(number_of_episodes_per_disc):
-        file_size = 500
-        generate_file(f"{path}/A{i}.mkv", file_size)
+    for tv_show_dir in tv_show_dirs:
+        season_dirs = generate_sequential_dirs(tv_show_dir, "Season", 5)
+        for season_dir in season_dirs:
+            disc_dirs = generate_sequential_dirs(season_dir, "Disc", number_of_discs_per_show)
+            for disc_dir in disc_dirs:
+                for i in range(number_of_episodes_per_disc):
+                    file_size = 500
+                    generate_file(f"{disc_dir}/A{i}.mkv", file_size)
 
-def generate_episodes_only_files(tv_show_path):
-    season_dirs = [f for f in os.listdir(tv_show_path) if isdir(join(tv_show_path, f))]
-    for season_dir in season_dirs:
-        season_path = f"{tv_show_path}/{season_dir}"
-        disc_dirs = [file for file in os.listdir(season_path) if isdir(join(season_path, file))]
-        for disc_dir in disc_dirs:
-            disc_path = f"{season_path}/{disc_dir}"
-            generate_episode_files_only(disc_path)
 
-# Most TV series ripped have a file that contains all of the episodes, then
-# individual files for each episode
-def generate_episode_files_with_large_file():
-    pass
-
-if not os.path.exists(base_path):
-    os.makedirs(base_path)
-
-tv_show_dirs = generate_directories(base_path, number_of_tv_shows)
-
-for tv_show_dir in tv_show_dirs:
-    season_dirs = generate_season_dirs(tv_show_dir)
-    for season_dir in season_dirs:
-        disc_dirs = generate_disc_dirs(season_dir)
-    generate_episodes_only_files(tv_show_dir)
+generate_generic_tv_shows()
