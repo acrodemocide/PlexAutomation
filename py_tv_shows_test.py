@@ -1,6 +1,6 @@
 import os
-from file_and_directory_util import generate_directories, generate_sequential_dirs, generate_file
-from os.path import join, isdir
+from file_and_directory_util import generate_file
+from os.path import join
 
 # Option B -- Use Dictionaries to define your folder structure, then traverse over the
 #   dictionary to either generate that folder structure or verify the existing structure
@@ -143,6 +143,7 @@ unprocessed_tv_shows = {
     ]
 }
 
+
 def generate_tv_shows(base_path, tv_shows_dictionary):
     tv_show_path = join(base_path, tv_shows_dictionary["name"])
     os.makedirs(tv_show_path)
@@ -200,6 +201,7 @@ def verify_unprocessed_tv_shows(base_path, tv_shows_dictionary):
                 if actual_episodes[k] != expected_episodes[k]["name"]:
                     print(f"Failed! Acutal episode name {actual_episodes[k]} not equal to expected episode name {expected_episodes[k]['name']}")
 
+
 def verify_processed_tv_shows(base_path, tv_shows_dictionary):
     if not os.path.exists(base_path):
         print(f"Failed! Base Path {base_path} does not exist")
@@ -223,7 +225,8 @@ def verify_processed_tv_shows(base_path, tv_shows_dictionary):
         for j in range(len(actual_episodes)):
             if actual_episodes[j] != expected_episodes[j]:
                 print(f"Failed! Actual episode name {actual_episodes[j]} not equal to expected episode name {expected_episodes[j]}")
-        
+
+    
 def generic_tv_shows_test():
     base_path = "tv_shows"
     number_of_tv_shows = 10
