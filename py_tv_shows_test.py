@@ -165,8 +165,40 @@ def generate_tv_shows(base_path, tv_shows_dictionary):
                 episode_size = episode["size"]
                 generate_file(episode_path, episode_size)
 
-def verify_tv_shows(tv_shows_dictionary):
-    pass
+
+def verify_tv_shows(base_path, tv_shows_dictionary):
+    if not os.path.exists(base_path):
+        print(f"Failed! Base Path {base_path} does not exist")
+
+    tv_show_path = join(base_path, tv_shows_dictionary["name"])
+    actual_seasons = os.listdir(tv_show_path)
+    expected_seasons = tv_shows_dictionary["seasons"]
+    if len(actual_seasons) != len(expected_seasons):
+        print(f"Failed! Actual number of seasons {len(actual_seasons)} != expected {len(expected_seasons)}")
+
+    for i in range(len(actual_seasons)):
+        season_path = join(tv_show_path, actual_seasons[i])
+        if actual_seasons[i] != expected_seasons[i]["name"]:
+            print(f"Failed! Actual season name {actual_seasons[i]} not equal to expected season name {expected_seasons[i]['name']}")
+
+        actual_discs = os.listdir(season_path)
+        expected_discs = expected_seasons[i]["discs"]
+        if len(actual_discs) != len(expected_discs):
+            print(f"Failed! Actual number of discs {len(actual_discs)} != expected {len(expected_discs)}")
+
+        for j in range(len(actual_discs)):
+            disc_path = join(season_path, actual_discs[j])
+            if actual_discs[j] != expected_discs[j]["name"]:
+                print(f"Failed! Actual disc name {actual_discs[j]} not equal to expected disc name {expected_discs[j]['name']}")
+
+            actual_episodes = os.listdir(disc_path)
+            expected_episodes = expected_discs[j]["episodes"]
+            if len(actual_episodes) != len(expected_episodes):
+                print(f"Failed! Actual number of episodes {len(actual_episodes)} != expected {len(expected_episodes)}")
+            
+            for k in range(len(actual_episodes)):
+                if actual_episodes[k] != expected_episodes[k]["name"]:
+                    print(f"Failed! Acutal episode name {actual_episodes[k]} not equal to expected episode name {expected_episodes[k]['name']}")
 
 
 def generate_generic_tv_shows(
@@ -209,6 +241,8 @@ def generate_generic_tv_shows(
 
     for tv_show in tv_shows:       
         generate_tv_shows(base_path, tv_show)
+    
+    return tv_shows
         
 def generic_tv_shows_test():
     base_path = "tv_shows"
@@ -217,7 +251,7 @@ def generic_tv_shows_test():
     number_of_discs_per_show = 4
     number_of_episodes_per_disc = 5
 
-    generate_generic_tv_shows(
+    generated_tv_shows = generate_generic_tv_shows(
         base_path, 
         number_of_tv_shows,
         number_of_seasons,
@@ -227,27 +261,14 @@ def generic_tv_shows_test():
     # Verify tv shows laid out as expected
     if not os.path.exists(base_path):
         print(f"Failed! Base Path {base_path} does not exist")
-    tv_shows = os.listdir(base_path)
-    for tv_show in tv_shows:
-        tv_show_path = join(base_path, tv_show)
-        seasons = os.listdir(tv_show_path)
-        if len(seasons) != number_of_seasons:
-            print(f"Failed! Actual number of seasons {len(seasons)} != expected {number_of_seasons}")
-        for season in seasons:
-            season_path = join(tv_show_path, season)
-            discs = os.listdir(season_path)
-            if len(discs) != number_of_discs_per_show:
-                print(f"Failed! Actual number of discs {len(discs)} != expected {number_of_discs_per_show}")
-            for disc in discs:
-                disc_path = join(season_path, disc)
-                episodes = os.listdir(disc_path)
-                if len(episodes) != number_of_episodes_per_disc:
-                    print(f"Failed! Actual number of episodes {len(episodes)} != expected {number_of_episodes_per_disc}")
+    for tv_show in generated_tv_shows:
+        verify_tv_shows(base_path, tv_show)
 
     # Run the test
     os.system("py_tv_shows.py tv_shows")
 
     # Verify the results
+    tv_shows = os.listdir(base_path)
     total_episodes_in_season = number_of_discs_per_show * number_of_episodes_per_disc
     for tv_show in tv_shows:
         tv_show_path = join(base_path, tv_show)
