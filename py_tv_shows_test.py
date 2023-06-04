@@ -1,6 +1,65 @@
 import os
 from file_and_directory_util import generate_directories, generate_sequential_dirs, generate_file
-from os.path import join
+from os.path import join, isdir
+
+# Option B -- Use Dictionaries to define your folder structure, then traverse over the
+#   dictionary to either generate that folder structure or verify the existing structure
+#   follows the defined pattern.
+unprocessed_tv_shows = {
+    "name": "my tv show (1990)",
+    "seasons": [
+        {
+            "name": "Season 01",
+            "discs": [
+                {
+                    "episodes": ["A1.mkv", "A2.mkv", "A3.mkv"]
+                },
+                {
+                    "episodes": ["B1.mkv", "B2.mkv", "B3.mkv"]
+                },
+                {
+                    "episodes": ["C1.mkv", "C2.mkv", "C3.mkv"]
+                }
+            ]
+        },
+        {
+            "name": "Season 02",
+            "discs": [
+                {
+                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
+                },
+                {
+                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
+                },
+                {
+                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
+                }
+            ]
+        }
+    ]
+}
+
+processed_tv_shows = {
+    "name": "my tv show (1990)",
+    "seasons": [
+        {
+            "name": "Season 01",
+            "episodes": [
+                "A1.mkv", "A2.mkv", "A3.mkv",
+                "B1.mkv", "B2.mkv", "B3.mkv",
+                "C1.mkv", "C2.mkv", "C3.mkv"]
+        },
+        {
+            "name": "Season 02",
+            "episodes": [
+                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
+                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
+                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
+            ]
+        }
+    ]
+}
+
 
 def generate_generic_tv_shows(
     base_path,
@@ -56,5 +115,24 @@ def generic_tv_shows_test():
                 episodes = os.listdir(disc_path)
                 if len(episodes) != number_of_episodes_per_disc:
                     print(f"Failed! Actual number of episodes {len(episodes)} != expected {number_of_episodes_per_disc}")
+
+    # Run the test
+    os.system("py_tv_shows.py tv_shows")
+
+    # Verify the results
+    total_episodes_in_season = number_of_discs_per_show * number_of_episodes_per_disc
+    for tv_show in tv_shows:
+        tv_show_path = join(base_path, tv_show)
+        seasons = os.listdir(tv_show_path)
+        if len(seasons) != number_of_seasons:
+            print(f"Failed! Expected {number_of_seasons} seasons, but found {len(seasons)}")
+        for season in seasons:
+            season_path = join(tv_show_path, season)
+            directories = [f for f in os.listdir(season_path) if isdir(join(season_path, f))]
+            if len(directories) != 0:
+                print(f"Failed! Expected no directories but found {len(directories)} in season {season}")
+            files = [f for f in os.listdir(season_path) if not isdir(join(season_path, f))]
+            if len(files) != total_episodes_in_season:
+                print(f"Failed! Expected {total_episodes_in_season} episodes, but found only {len(files)}")
 
 generic_tv_shows_test()
