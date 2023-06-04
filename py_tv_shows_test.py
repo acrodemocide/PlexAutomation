@@ -5,40 +5,6 @@ from os.path import join, isdir
 # Option B -- Use Dictionaries to define your folder structure, then traverse over the
 #   dictionary to either generate that folder structure or verify the existing structure
 #   follows the defined pattern.
-unprocessed_tv_shows = {
-    "name": "my tv show (1990)",
-    "seasons": [
-        {
-            "name": "Season 01",
-            "discs": [
-                {
-                    "episodes": ["A1.mkv", "A2.mkv", "A3.mkv"]
-                },
-                {
-                    "episodes": ["B1.mkv", "B2.mkv", "B3.mkv"]
-                },
-                {
-                    "episodes": ["C1.mkv", "C2.mkv", "C3.mkv"]
-                }
-            ]
-        },
-        {
-            "name": "Season 02",
-            "discs": [
-                {
-                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
-                },
-                {
-                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
-                },
-                {
-                    "episodes": ["asdf.mkv", "fdsa.mkv", "jkl.mkv"]
-                }
-            ]
-        }
-    ]
-}
-
 processed_tv_shows = {
     "name": "my tv show (1990)",
     "seasons": [
@@ -60,28 +26,190 @@ processed_tv_shows = {
     ]
 }
 
+unprocessed_tv_shows = {
+    "name": "my tv show (1990)",
+    "seasons": [
+        {
+            "name": "Season 01",
+            "discs": [
+                {
+                    "name": "Disc 1",
+                    "episodes": [
+                        {
+                            "name": "A1.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "A2.mkv",
+                            "size": 50},
+                        {
+                            "name": "A3.mkv",
+                            "size": 50
+                        }
+                    ]
+                },
+                {
+                    "name": "Disc 2",
+                    "episodes": [
+                        {
+                            "name": "B1.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "B2.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "B3.mkv",
+                            "size": 50
+                        }
+                    ]
+                },
+                {
+                    "name": "Disc 3",
+                    "episodes": [
+                        {
+                            "name": "C1.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "C2.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "C3.mkv",
+                            "size": 50
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Season 02",
+            "discs": [
+                {
+                    "name": "Disc 1",
+                    "episodes": [
+                        {
+                            "name": "asdf.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "fdsa.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "jkl.mkv",
+                            "size": 50
+                        }
+                    ]
+                },
+                {
+                    "name": "Disc 2",
+                    "episodes": [
+                        {
+                            "name": "asdf.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "fdsa.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "jkl.mkv",
+                            "size": 50
+                        }
+                    ]
+                },
+                {
+                    "name": "Disc 3",
+                    "episodes": [
+                        {
+                            "name": "asdf.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "fdsa.mkv",
+                            "size": 50
+                        },
+                        {
+                            "name": "jkl.mkv",
+                            "size": 50
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+def generate_tv_shows(base_path, tv_shows_dictionary):
+    tv_show_path = join(base_path, tv_shows_dictionary["name"])
+    os.makedirs(tv_show_path)
+
+    for season in tv_shows_dictionary["seasons"]:
+        season_name = season["name"]
+        season_path = join(tv_show_path, season_name)
+        os.makedirs(season_path)
+
+        discs = season["discs"]
+        for disc in discs:
+            disc_name = disc["name"]
+            disc_path = join(season_path, disc_name)
+            os.makedirs(disc_path)
+
+            episodes = disc["episodes"]
+            for episode in episodes:
+                episode_name = episode["name"]
+                episode_path = join(disc_path, episode_name)
+                episode_size = episode["size"]
+                generate_file(episode_path, episode_size)
+
+def verify_tv_shows(tv_shows_dictionary):
+    pass
+
 
 def generate_generic_tv_shows(
     base_path,
     number_of_tv_shows,
     number_of_seasons,
-    number_of_discs_per_show,
+    number_of_discs_per_season,
     number_of_episodes_per_disc):
 
     if not os.path.exists(base_path):
         os.makedirs(base_path)
 
-    tv_show_dirs = generate_directories(base_path, number_of_tv_shows)
-
-    for tv_show_dir in tv_show_dirs:
-        season_dirs = generate_sequential_dirs(tv_show_dir, "Season", number_of_seasons)
-        for season_dir in season_dirs:
-            disc_dirs = generate_sequential_dirs(season_dir, "Disc", number_of_discs_per_show)
-            for disc_dir in disc_dirs:
-                for i in range(number_of_episodes_per_disc):
+    tv_shows = []
+    for i in range(number_of_tv_shows):
+        tv_show = {
+            "name": f"test ({1990 + i})",
+            "seasons": []
+        }
+        for j in range(number_of_seasons):
+            season = {
+                "name": f"Season {j + 1}",
+                "discs": []
+            }
+            for k in range(number_of_discs_per_season):
+                disc = {
+                    "name": f"Disc {k + 1}",
+                    "episodes": []
+                }
+                for l in range(number_of_episodes_per_disc):
                     file_size = 500
-                    generate_file(f"{disc_dir}/A{i}.mkv", file_size)
+                    episode = {
+                        "name": f"A{l}.mkv",
+                        "size": file_size
+                    }
+                    disc["episodes"].append(episode)
+                season["discs"].append(disc)
+            tv_show["seasons"].append(season)
+        tv_shows.append(tv_show)
 
+
+    for tv_show in tv_shows:       
+        generate_tv_shows(base_path, tv_show)
+        
 def generic_tv_shows_test():
     base_path = "tv_shows"
     number_of_tv_shows = 10
