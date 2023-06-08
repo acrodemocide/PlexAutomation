@@ -12,16 +12,83 @@ processed_tv_shows = {
         {
             "name": "Season 01",
             "episodes": [
-                "A1.mkv", "A2.mkv", "A3.mkv",
-                "B1.mkv", "B2.mkv", "B3.mkv",
-                "C1.mkv", "C2.mkv", "C3.mkv"]
+                {
+                    "name": "A1.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "A2.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "A3.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "B1.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "B2.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "B3.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "C1.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "C2.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "C3.mkv",
+                    "size": 50
+                }
+            ]
         },
         {
             "name": "Season 02",
             "episodes": [
-                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
-                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
-                "asdf.mkv", "fdsa.mkv", "jkl.mkv",
+                {
+                    "name": "asdf.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "fdsa.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "jkl.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "asdf.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "fdsa.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "jkl.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "asdf.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "fdsa.mkv",
+                    "size": 50
+                },
+                {
+                    "name": "jkl.mkv",
+                    "size": 50
+                }
             ]
         }
     ]
