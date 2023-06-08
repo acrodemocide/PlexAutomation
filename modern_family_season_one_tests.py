@@ -1,5 +1,5 @@
 import os
-from test_utilities import generate_tv_shows, verify_unprocessed_tv_shows
+from test_utilities import generate_tv_shows, verify_unprocessed_tv_shows, verify_processed_tv_shows
 
 def season_01_test():
     base_path = "tv_shows"
@@ -254,10 +254,106 @@ def season_01_test():
             {
                 "name": "Season 01",
                 "episodes": [
-                    {}
+                    {
+                        "name": "Modern Family (2009) - s01e01",
+                        "size": 1100
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e02",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e03",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e04",
+                        "size": 996
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e05",
+                        "size": 1100
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e06",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e07",
+                        "size": 924
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e08",
+                        "size": 923
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e09",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e10",
+                        "size": 1100
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e11",
+                        "size": 1100
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e12",
+                        "size": 950
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e13",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e14",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e15",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e16",
+                        "size": 945
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e17",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e18",
+                        "size": 1000
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e19",
+                        "size": 963
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e20",
+                        "size": 940
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e21",
+                        "size": 969
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e22",
+                        "size": 920
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e23",
+                        "size": 951
+                    },
+                    {
+                        "name": "Modern Family (2009) - s01e24",
+                        "size": 948
+                    },
                 ]
             }
         ]
     }
+    verify_processed_tv_shows(base_path, processed_tv_show)
 
 season_01_test()
