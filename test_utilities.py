@@ -84,6 +84,9 @@ def verify_processed_tv_shows(base_path, tv_shows_dictionary):
         for j in range(len(actual_episodes)):
             if actual_episodes[j] != expected_episodes[j]["name"]:
                 print(f"Failed! Actual episode name {actual_episodes[j]} not equal to expected episode name {expected_episodes[j]['name']}")
+            actual_file_size = os.path.getsize(join(season_path, actual_episodes[j]))
+            if actual_file_size != expected_episodes[j]["size"]:
+                print(f"Failed! Actual episode size {actual_file_size} not equal to expected episode name {expected_episodes[j]['size']}")
             # actual_episode_info = ffmpeg.probe(join(season_path, actual_episodes[j]))[0]
             # if actual_episode_info["duration"] != expected_episodes[j]["size"]:
             #     print(f"Failed! Actual episode size {actual_episode_info['duration']} not equal to expected episode name {expected_episodes[j]['size']}")

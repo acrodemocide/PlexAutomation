@@ -281,7 +281,7 @@ def generic_tv_shows_test():
                 season["episodes"].append(
                     {
                         "name": f"{tv_show['name']} - s{season_number}e{episode_number}.mkv",
-                        "size": 50
+                        "size": 500
                     })
             processed_tv_show["seasons"].append(season)
         processed_tv_shows.append(processed_tv_show)
