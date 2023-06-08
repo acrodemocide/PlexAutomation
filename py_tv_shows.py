@@ -14,9 +14,14 @@ def get_child_files(path):
     children = [f for f in os.listdir(path) if not isdir(join(path, f))]
     return children
 
+# TODO: work on this later -- the different kinds of TV shows have widely enough
+#   varying lengths that trying to do this right out the gate is going to be
+#   really difficult.
 def remove_files_that_are_not_episodes(file_paths):
     file_lengths = [stat(f).st_size for f in file_paths]
+    print(f"file_lengths: {file_lengths}")
     mean_length = statistics.mean(file_lengths)
+    print(f"mean_length: {mean_length}")
     filtered_files = [f for f in file_paths if stat(f).st_size < 2 * mean_length and stat(f).st_size > 0.75 * mean_length]
     [remove(f) for f in file_paths if stat(f).st_size >= 2 * mean_length or stat(f).st_size <= 0.75 * mean_length]
     return filtered_files
@@ -37,7 +42,9 @@ for tv_show in tv_shows:
         for disc in discs:
             disc_path = join(season_path, disc)
             files = get_child_files(disc_path)
-            episode_file_paths = remove_files_that_are_not_episodes([join(disc_path, f) for f in files])
+            # TODO: We'll use this call instead once we figure out a good way to filter out all non-episode files
+            # episode_file_paths = remove_files_that_are_not_episodes([join(disc_path, f) for f in files])
+            episode_file_paths = [join(disc_path, f) for f in files]
             episode_file_paths.sort()
             for episode_file_path in episode_file_paths:
                 if (current_episode_number < 10):

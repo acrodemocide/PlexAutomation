@@ -7,19 +7,11 @@ def season_01_test():
         "name": "Modern Family (2009)",
         "seasons": [
             {
-                "name": "Season 1",
+                "name": "Season 01",
                 "discs": [
                     {
                         "name": "MODERNFAMILY_S1_D1",
                         "episodes": [
-                            {
-                                "name": "A1_t08.mkv",
-                                "size": 91
-                            },
-                            {
-                                "name": "B1_t00.mkv",
-                                "size": 6200
-                            },
                             {
                                 "name": "C1_t01.mkv",
                                 "size": 1100
@@ -43,36 +35,12 @@ def season_01_test():
                             {
                                 "name": "C6_t06.mkv",
                                 "size": 1000
-                            },
-                            {
-                                "name": "C7_t07.mkv",
-                                "size": 6200
-                            },
-                            {
-                                "name": "D1_t12.mkv",
-                                "size": 312
-                            },
-                            {
-                                "name": "D2_t10.mkv",
-                                "size": 185
-                            },
-                            {
-                                "name": "E1_t09.mkv",
-                                "size": 324
-                            },
-                            {
-                                "name": "E4_t11.mkv",
-                                "size": 104
                             }
                         ]
                     },
                     {
                         "name": "MODERNFAMILY_S1_D2",
                         "episodes": [
-                            {
-                                "name": "B1_t00.mkv",
-                                "size": 6000
-                            },
                             {
                                 "name": "C1_t01.mkv",
                                 "size": 924
@@ -96,44 +64,12 @@ def season_01_test():
                             {
                                 "name": "C6_t06.mkv",
                                 "size": 950
-                            },
-                            {
-                                "name": "C7_t07.mkv",
-                                "size": 6000
-                            },
-                            {
-                                "name": "D1_t08.mkv",
-                                "size": 882
-                            },
-                            {
-                                "name": "D2_t09.mkv",
-                                "size": 92
-                            },
-                            {
-                                "name": "D3_t10.mkv",
-                                "size": 146
-                            },
-                            {
-                                "name": "D4_t11.mkv",
-                                "size": 244
-                            },
-                            {
-                                "name": "D5_t12.mkv",
-                                "size": 310
-                            },
-                            {
-                                "name": "D6_t13.mkv",
-                                "size": 90
                             }
                         ]
                     },
                     {
                         "name": "MODERNFAMILY_S1_D3",
                         "episodes": [
-                            {
-                                "name": "B1_t00.mkv",
-                                "size": 6100
-                            },
                             {
                                 "name": "C1_t01.mkv",
                                 "size": 1000
@@ -157,25 +93,12 @@ def season_01_test():
                             {
                                 "name": "C6_t06.mkv",
                                 "size": 1000
-                            },
-                            {
-                                "name": "C7_t07.mkv",
-                                "size": 6100
-                            },
-
-                            {
-                                "name": "E1_t08.mkv",
-                                "size": 242
                             }
                         ]
                     },
                     {
                         "name": "MODERNFAMILY_S1_D4",
                         "episodes": [
-                            {
-                                "name": "B1_t00.mkv",
-                                "size": 5700
-                            },
                             {
                                 "name": "C1_t01.mkv",
                                 "size": 963
@@ -199,38 +122,6 @@ def season_01_test():
                             {
                                 "name": "C6_t06.mkv",
                                 "size": 948
-                            },
-                            {
-                                "name": "C7_t07.mkv",
-                                "size": 5700
-                            },
-                            {
-                                "name": "D1_t08.mkv",
-                                "size": 246
-                            },
-                            {
-                                "name": "D2_t09.mkv",
-                                "size": 212
-                            },
-                            {
-                                "name": "D3_t10.mkv",
-                                "size": 390
-                            },
-                            {
-                                "name": "E1_t11.mkv",
-                                "size": 485
-                            },
-                            {
-                                "name": "E2_t14.mkv",
-                                "size": 156
-                            },
-                            {
-                                "name": "E3_t12.mkv",
-                                "size": 339
-                            },
-                            {
-                                "name": "E4_t13.mkv",
-                                "size": 197
                             }
                         ]
                     },
