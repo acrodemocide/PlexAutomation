@@ -277,7 +277,6 @@ def generic_tv_shows_test():
             for j in range(number_of_discs_per_season * number_of_episodes_per_disc):
                 season_number = f"0{i+1}" if i + 1 < 10 else f"{i+1}"
                 episode_number = f"0{j+1}" if j + 1 < 10 else f"{j+1}"
-                # season["episodes"].append(f"{tv_show['name']} - s{season_number}e{episode_number}.mkv")
                 season["episodes"].append(
                     {
                         "name": f"{tv_show['name']} - s{season_number}e{episode_number}.mkv",
