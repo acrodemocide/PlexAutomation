@@ -255,99 +255,99 @@ def season_01_test():
                 "name": "Season 01",
                 "episodes": [
                     {
-                        "name": "Modern Family (2009) - s01e01",
+                        "name": "Modern Family (2009) - s01e01.mkv",
                         "size": 1100
                     },
                     {
-                        "name": "Modern Family (2009) - s01e02",
+                        "name": "Modern Family (2009) - s01e02.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e03",
+                        "name": "Modern Family (2009) - s01e03.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e04",
+                        "name": "Modern Family (2009) - s01e04.mkv",
                         "size": 996
                     },
                     {
-                        "name": "Modern Family (2009) - s01e05",
+                        "name": "Modern Family (2009) - s01e05.mkv",
                         "size": 1100
                     },
                     {
-                        "name": "Modern Family (2009) - s01e06",
+                        "name": "Modern Family (2009) - s01e06.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e07",
+                        "name": "Modern Family (2009) - s01e07.mkv",
                         "size": 924
                     },
                     {
-                        "name": "Modern Family (2009) - s01e08",
+                        "name": "Modern Family (2009) - s01e08.mkv",
                         "size": 923
                     },
                     {
-                        "name": "Modern Family (2009) - s01e09",
+                        "name": "Modern Family (2009) - s01e09.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e10",
+                        "name": "Modern Family (2009) - s01e10.mkv",
                         "size": 1100
                     },
                     {
-                        "name": "Modern Family (2009) - s01e11",
+                        "name": "Modern Family (2009) - s01e11.mkv",
                         "size": 1100
                     },
                     {
-                        "name": "Modern Family (2009) - s01e12",
+                        "name": "Modern Family (2009) - s01e12.mkv",
                         "size": 950
                     },
                     {
-                        "name": "Modern Family (2009) - s01e13",
+                        "name": "Modern Family (2009) - s01e13.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e14",
+                        "name": "Modern Family (2009) - s01e14.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e15",
+                        "name": "Modern Family (2009) - s01e15.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e16",
+                        "name": "Modern Family (2009) - s01e16.mkv",
                         "size": 945
                     },
                     {
-                        "name": "Modern Family (2009) - s01e17",
+                        "name": "Modern Family (2009) - s01e17.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e18",
+                        "name": "Modern Family (2009) - s01e18.mkv",
                         "size": 1000
                     },
                     {
-                        "name": "Modern Family (2009) - s01e19",
+                        "name": "Modern Family (2009) - s01e19.mkv",
                         "size": 963
                     },
                     {
-                        "name": "Modern Family (2009) - s01e20",
+                        "name": "Modern Family (2009) - s01e20.mkv",
                         "size": 940
                     },
                     {
-                        "name": "Modern Family (2009) - s01e21",
+                        "name": "Modern Family (2009) - s01e21.mkv",
                         "size": 969
                     },
                     {
-                        "name": "Modern Family (2009) - s01e22",
+                        "name": "Modern Family (2009) - s01e22.mkv",
                         "size": 920
                     },
                     {
-                        "name": "Modern Family (2009) - s01e23",
+                        "name": "Modern Family (2009) - s01e23.mkv",
                         "size": 951
                     },
                     {
-                        "name": "Modern Family (2009) - s01e24",
+                        "name": "Modern Family (2009) - s01e24.mkv",
                         "size": 948
                     },
                 ]
