@@ -245,4 +245,19 @@ def season_01_test():
         print(f"Failed! Base Path {base_path} does not exist")
     verify_unprocessed_tv_shows(base_path, tv_show)
 
+    # Run the test
+    os.system("py_tv_shows.py tv_shows")
+
+    processed_tv_show = {
+        "name": "Modern Family (2009)",
+        "seasons": [
+            {
+                "name": "Season 01",
+                "episodes": [
+                    {}
+                ]
+            }
+        ]
+    }
+
 season_01_test()

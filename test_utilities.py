@@ -1,4 +1,5 @@
 import os
+# import ffmpeg
 from file_and_directory_util import generate_file
 from os.path import join
 
@@ -81,5 +82,8 @@ def verify_processed_tv_shows(base_path, tv_shows_dictionary):
             print(f"Failed! Actual number of episodes {len(actual_episodes)} != expected {len(expected_episodes)}")
             
         for j in range(len(actual_episodes)):
-            if actual_episodes[j] != expected_episodes[j]:
-                print(f"Failed! Actual episode name {actual_episodes[j]} not equal to expected episode name {expected_episodes[j]}")
+            if actual_episodes[j] != expected_episodes[j]["name"]:
+                print(f"Failed! Actual episode name {actual_episodes[j]} not equal to expected episode name {expected_episodes[j]['name']}")
+            # actual_episode_info = ffmpeg.probe(join(season_path, actual_episodes[j]))[0]
+            # if actual_episode_info["duration"] != expected_episodes[j]["size"]:
+            #     print(f"Failed! Actual episode size {actual_episode_info['duration']} not equal to expected episode name {expected_episodes[j]['size']}")
