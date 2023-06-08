@@ -1,8 +1,9 @@
 import os
 from test_utilities import generate_tv_shows, verify_unprocessed_tv_shows, verify_processed_tv_shows
 
+base_path = "tv_shows"
+
 def season_01_test():
-    base_path = "tv_shows"
     tv_show = {
         "name": "Modern Family (2009)",
         "seasons": [
@@ -126,7 +127,87 @@ def season_01_test():
                         ]
                     },
                 ]
-            }
+            },
+            # TODO: Need to get rest of disc ripped
+            # {
+            #     "name": "Season 02",
+            #     "discs": [
+            #         {
+            #             "name": "MODERN_FAMILY_S2_DISC1",
+            #             "episodes": [
+            #                 {
+            #                     "name": "B1_t01.mkv",
+            #                     "size": 746
+            #                 },
+            #                 {
+            #                     "name": "B2_t02.mkv",
+            #                     "size": 738
+            #                 },
+            #                 {
+            #                     "name": "B3_t03.mkv",
+            #                     "size": 738
+            #                 },
+            #                 {
+            #                     "name": "B4_t04.mkv",
+            #                     "size": 745
+            #                 },
+            #                 {
+            #                     "name": "B5_t05.mkv",
+            #                     "size": 744
+            #                 },
+            #                 {
+            #                     "name": "B6_t06.mkv",
+            #                     "size": 722
+            #                 },
+            #                 {
+            #                     "name": "B7_t07.mkv",
+            #                     "size": 717
+            #                 },
+            #                 {
+            #                     "name": "B8_t08.mkv",
+            #                     "size": 674
+            #                 }
+            #             ]
+            #         },
+            #         {
+            #             "name": "MODERN_FAMILY_S2_DISC2",
+            #             "episodes": [
+            #                 {
+            #                     "name": "B1_t01.mkv",
+            #                     "size": 911
+            #                 },
+            #                 {
+            #                     "name": "B2_t02.mkv",
+            #                     "size": 892
+            #                 },
+            #                 {
+            #                     "name": "B3_t03.mkv",
+            #                     "size": 909
+            #                 },
+            #                 {
+            #                     "name": "B4_t04.mkv",
+            #                     "size": 911
+            #                 },
+            #                 {
+            #                     "name": "B5_t05.mkv",
+            #                     "size": 867
+            #                 },
+            #                 {
+            #                     "name": "B6_t05.mkv",
+            #                     "size": 871
+            #                 },
+            #                 {
+            #                     "name": "B7_t07.mkv",
+            #                     "size": 886
+            #                 },
+            #                 {
+            #                     "name": "B8_t08.mkv",
+            #                     "size": 877
+            #                 }
+            #             ]
+            #         }
+            #     ]
+            # }
         ]
     }
     generate_tv_shows(base_path, tv_show)
