@@ -218,7 +218,7 @@ def season_01_test():
     verify_unprocessed_tv_shows(base_path, tv_show)
 
     # Run the test
-    os.system("py_tv_shows.py tv_shows")
+    os.system("process_tv_shows.py tv_shows")
 
     processed_tv_show = {
         "name": "Modern Family (2009)",
