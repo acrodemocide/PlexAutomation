@@ -4,6 +4,30 @@ from os import rmdir, remove, rename, stat
 from os.path import join, isdir
 import statistics
 
+##Usage:
+## Put all folders created for each ripped disc into a single season folder named like <tv_show> Season X
+##	For example: My Tv Show (1999) Season 3 or My Tv Show (1999) Season 11
+## Disc folders don't need to be named any specific way so long as they are listed in chronological order
+## The same is true for episode files -- they don't need to be named in any specific way so long as they
+##	are in chronological order
+##
+##Steps:
+##	1- Create a folder with the name of the TV Show (e.g. TV Show (1999)).
+##	2- For each season of ripped discs, create a folder for that season (i.e.: "Season 1", "Season 2", ... "Season 11")
+##	3- For all ripped discs for a given season, put them in the corresponding season folder.
+##		A- They don't need to be named in a particular way, so long as they list in chronological order.
+##	4- For each ripped disc folder, manually inspect the ripped files, and delete all non-episodes.
+##		A- If you're being completely thorough, you'll preview each file and ensure that they are listed in the
+##		correct order the episodes occur (though usually they are).
+##		B- Ensure that the episode files are listed in chronological order (they don't need any special naming
+##		just so long as they are listed in the folder in chronological order)
+##	5- (Optional, but good to do) Make a backup copy of your newly organized file structure somewhere (this can take a little bit).
+##	6- Ensure that all your TV shows that you want renamed are co-located and organized as described above.
+##	7- Run this program to rename all files to follow proper Plex naming convention and to organize your TV show folder structures
+##	for Plex. Essentially, you'll have a TV Show folder (named like it should be on Plex), then subfolders named "Season 01,"
+##	"Season 02," etc, then each will contain the list of episodes for that season with each properly named for Plex.
+##	8- These files are now ready to be easily fed into Handbrake without needing to make any name changes.
+
 base_path = sys.argv[1]
 
 def get_child_directories(path):
