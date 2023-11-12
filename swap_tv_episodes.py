@@ -11,6 +11,8 @@
 
 # The above example will swap episode 1 and 2, 3 and 8, and 10 and 12.
 
+# Usage: python swap_tv_episodes.py <swap_file>
+
 import sys
 import re
 from os import listdir, rename
