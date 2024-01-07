@@ -63,6 +63,7 @@ for tv_show in tv_shows:
             file_name_prefix = f"{tv_show} - s{season_number}"
         current_episode_number = 1
         discs = get_child_directories(season_path)
+        discs.sort()
         for disc in discs:
             disc_path = join(season_path, disc)
             files = get_child_files(disc_path)
