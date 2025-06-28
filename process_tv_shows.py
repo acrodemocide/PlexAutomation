@@ -1,3 +1,4 @@
+import re
 import sys
 import os
 from os import rmdir, remove, rename, stat
@@ -8,8 +9,7 @@ import statistics
 ## Put all folders created for each ripped disc into a single season folder named like <tv_show> Season X
 ##	For example: My Tv Show (1999) Season 3 or My Tv Show (1999) Season 11
 ## Disc folders don't need to be named any specific way so long as they are listed in chronological order
-## The same is true for episode files -- they don't need to be named in any specific way so long as they
-##	are in chronological order
+## Episode files while be sorted based on the track in the filename.
 ##
 ##Steps:
 ##	1- Create a folder with the name of the TV Show (e.g. TV Show (1999)).
@@ -50,6 +50,13 @@ def remove_files_that_are_not_episodes(file_paths):
     [remove(f) for f in file_paths if stat(f).st_size >= 2 * mean_length or stat(f).st_size <= 0.75 * mean_length]
     return filtered_files
 
+def extract_track_number(filename):
+    match = re.search(r't(\d+)', filename)
+    if match:
+        return int(match.group(1))
+    else:
+        raise ValueError(f"Track pattern not found in filename: {filename}")
+
 tv_shows = get_child_directories(base_path)
 for tv_show in tv_shows:
     tv_show_path = join(base_path, tv_show)
@@ -70,7 +77,12 @@ for tv_show in tv_shows:
             # TODO: We'll use this call instead once we figure out a good way to filter out all non-episode files
             # episode_file_paths = remove_files_that_are_not_episodes([join(disc_path, f) for f in files])
             episode_file_paths = [join(disc_path, f) for f in files]
-            episode_file_paths.sort()
+            episode_file_paths = sorted(episode_file_paths, key=extract_track_number)
+            # DEBUG: Print out the episode file paths to ensure they are sorted correctly
+            for f in episode_file_paths:
+                print(f)
+            # TODO: The following sorts by name
+            # episode_file_paths.sort()
             for episode_file_path in episode_file_paths:
                 if (current_episode_number < 10):
                     new_file_name = f"{file_name_prefix}e0{current_episode_number}.mkv"
